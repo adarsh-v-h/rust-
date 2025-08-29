@@ -5,3 +5,15 @@ Here println! is a rust macro, not a function, the "!" mark at the end tells if 
 ";" is important as it tells the termination of a line.
 First we usually compile the code to an exe file with "rustc file_name", the file thats executed is .exe.
 The .pdb exetension file contains the information for debugging.
+Cargo is a package manager, which handles the dependencies.
+The command to create a dir with cargo and have created files in it already is "cargo new dir_name".
+The files created by it are cargo.toml and a main.rs file and it has also initialized a new git repo along with .gitignore file.
+Note: we can stop this or change this, to something else like some different version control system, using the --vcs flag. 
+Next if we head to .toml file, we will see package and dependencies, tomol = Tom's obvious, Minimal Language.
+First part is package, which is followed by statements that are configuring a package. In it we will have the name, the version and the edition of RUST to use.
+Next is the dependencies section, about it later. In RUST, the packages of code are referred to as crates.
+When we run Cargo new, the main file is in a sub dir called "src", and other files are in top dir.
+The "cargo build" command creates an exe file in a sub-sub dir, target\debug\file.exe, because defaulf build is debug build. 
+The cargo.lock keeps track of the exact version and dependencies in your project.
+The "cargo run" complies and executed the file. If there is no change in the file after the build, then it directly executes, if there is, then it complies and then executes.
+
