@@ -1,2 +1,7 @@
 The fn main(), creates a function called main, in rust just like C/C++ is where the execution begins.
 The file has the exetention .rs and is first converted to .exe file, by the command, "rustc file_name", then ran with .\main.exe.
+Here println! is a rust macro, not a function, the "!" mark at the end tells if its a macro or just a normal function, they are not the same.
+"Hello, world!" as a string is passed as an argument to println.
+";" is important as it tells the termination of a line.
+First we usually compile the code to an exe file with "rustc file_name", the file thats executed is .exe.
+The .pdb exetension file contains the information for debugging.
