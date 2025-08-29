@@ -1,0 +1,2 @@
+The fn main(), creates a function called main, in rust just like C/C++ is where the execution begins.
+The file has the exetention .rs and is first converted to .exe file, by the command, "rustc file_name", then ran with .\main.exe.
