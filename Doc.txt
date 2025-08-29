@@ -16,4 +16,6 @@ When we run Cargo new, the main file is in a sub dir called "src", and other fil
 The "cargo build" command creates an exe file in a sub-sub dir, target\debug\file.exe, because defaulf build is debug build. 
 The cargo.lock keeps track of the exact version and dependencies in your project.
 The "cargo run" complies and executed the file. If there is no change in the file after the build, then it directly executes, if there is, then it complies and then executes.
+The "cargo check" command complies the code without creating an exe file. Its better for regular checking, and is faster than "cargo build" as it doesnt create an exe file.
+THE steps are as follows: 1. create a new project with cargo new, 2. we build a project with cargo build, 3. we can build and run with cargo run, 4. we can check code without exe file with cargo check.
 
