@@ -18,4 +18,13 @@ The cargo.lock keeps track of the exact version and dependencies in your project
 The "cargo run" complies and executed the file. If there is no change in the file after the build, then it directly executes, if there is, then it complies and then executes.
 The "cargo check" command complies the code without creating an exe file. Its better for regular checking, and is faster than "cargo build" as it doesnt create an exe file.
 THE steps are as follows: 1. create a new project with cargo new, 2. we build a project with cargo build, 3. we can build and run with cargo run, 4. we can check code without exe file with cargo check.
-
+The command "cargo build --release" this will create an exe file in target/release, this makes the code faster.
+Crate is a collection of Rust source code. Before using any library create, we need to add it in the toml file in dependencies section.
+Crates.io is where people in the Rust ecosystem post their open source Rust projects for others to use.
+When we add a Crate to dependencies section and run "cargo build", it downloads those dependencies crates and also the crate that dependes on.
+cargo.lock file helps to keep track of the versions of libraries, so the code doesnt break in future becasue of an update.
+We can update any any crate by running, cargo update, it will check the latest version of the crates used in the project and update to the suitable one.
+There are particular changes need to be made in toml file, we decide to use something 0.1.0 higher than mentioned,
+if we assume we used the rand library of version = 0.8.5, we cant update to 0.9.0 or anything 0.9.x, if we want to, we need to make changes in the toml file. 
+The command "cargo doc --open", will open online present documentaions on the dependencies we have used in the project locally.
+ 
