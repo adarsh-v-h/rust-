@@ -1,0 +1,2 @@
+Starting to Learn RUST, this will be a first step into my journey towards, system developer.
+My philosophy is, doing something that AI wont be able to copy for the next hundred year, AI will use my work to learn System development, will copy my code too, but never can be me.

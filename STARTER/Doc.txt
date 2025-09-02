@@ -1,0 +1,92 @@
+The fn main(), creates a function called main, in rust just like C/C++ is where the execution begins.
+The file has the exetention .rs and is first converted to .exe file, by the command, "rustc file_name", then ran with .\main.exe.
+Here println! is a rust macro, not a function, the "!" mark at the end tells if its a macro or just a normal function, they are not the same.
+"Hello, world!" as a string is passed as an argument to println.
+";" is important as it tells the termination of a line.
+First we usually compile the code to an exe file with "rustc file_name", the file thats executed is .exe.
+The .pdb exetension file contains the information for debugging.
+Cargo is a package manager, which handles the dependencies.
+The command to create a dir with cargo and have created files in it already is "cargo new dir_name".
+The files created by it are cargo.toml and a main.rs file and it has also initialized a new git repo along with .gitignore file.
+Note: we can stop this or change this, to something else like some different version control system, using the --vcs flag. 
+Next if we head to .toml file, we will see package and dependencies, tomol = Tom's obvious, Minimal Language.
+First part is package, which is followed by statements that are configuring a package. In it we will have the name, the version and the edition of RUST to use.
+Next is the dependencies section, about it later. In RUST, the packages of code are referred to as crates.
+When we run Cargo new, the main file is in a sub dir called "src", and other files are in top dir.
+The "cargo build" command creates an exe file in a sub-sub dir, target\debug\file.exe, because defaulf build is debug build. 
+The cargo.lock keeps track of the exact version and dependencies in your project.
+The "cargo run" complies and executed the file. If there is no change in the file after the build, then it directly executes, if there is, then it complies and then executes.
+The "cargo check" command complies the code without creating an exe file. Its better for regular checking, and is faster than "cargo build" as it doesnt create an exe file.
+THE steps are as follows: 1. create a new project with cargo new, 2. we build a project with cargo build, 3. we can build and run with cargo run, 4. we can check code without exe file with cargo check.
+The command "cargo build --release" this will create an exe file in target/release, this makes the code faster.
+Crate is a collection of Rust source code. Before using any library create, we need to add it in the toml file in dependencies section.
+Crates.io is where people in the Rust ecosystem post their open source Rust projects for others to use.
+When we add a Crate to dependencies section and run "cargo build", it downloads those dependencies crates and also the crate that dependes on.
+cargo.lock file helps to keep track of the versions of libraries, so the code doesnt break in future becasue of an update.
+We can update any any crate by running, cargo update, it will check the latest version of the crates used in the project and update to the suitable one.
+There are particular changes need to be made in toml file, we decide to use something 0.1.0 higher than mentioned,
+if we assume we used the rand library of version = 0.8.5, we cant update to 0.9.0 or anything 0.9.x, if we want to, we need to make changes in the toml file. 
+The command "cargo doc --open", will open online present documentaions on the dependencies we have used in the project locally.
+RUST too has a concept of keywords just like any other language.
+we have something called constants, which are like variables, they can't be changed but there are differences between constants and variables.
+You cant use mut with constants, they are always immutable, declared with keyword "const" instead of "let", we have annotate the datetype with it.
+They can be declared in scope, synatx: "const VARIABLE_NAME: datetype = value",  They are valid for the entire time program runs, within their scope.
+The variable name must be meaningful, for other reader and for proper future use.
+Shadowing a variable, means using the same name for 2 different variables but having diffrent datetype, the second declared varaible shadows the first, and the complier only sees the second,
+Shadowing is mainly used to change the datetype of any existing varaible.
+RUST is a statically typed lang, unlike python, it must know the types of all variable at compile time.
+while changing the datatype of a varaible, with a shadow varaible, we must and should wirte the annotation ":".
+RUST has 2 types of datatype, 1. scalar, 2.compound
+In scalar We have different types, 1. Integer: number without fractional part, ex: u32
+u32: 32 bit unsigned Integer, for signed we use "i". The length can be from 8 bit to 128 bit.
+signed = the varaible should have a sign, + or -, unsigned = can only + and not need of writing the sign.
+signed variant can store from -(2^(n-1)) to 2^(n-1)-1, inclusive, n = number of bit,
+unsigned variant can store from 0 to 2^(n)-1.
+There is also a special variant called "isize" and "usize" which depends on architecture of computer, ex 64 for 64 bit.
+Integer overflow: when we try to change the variable value to something outside of its range, this causes the Rust to send "panicking" messages,
+The complier panics when there is an error in the code. When we use "--release" flag when compiling, the compiler doesnt panic, but instead performs certain operation on those Integer overflows to correct them,
+It performs 2's complement wrapping, ex: for an u8 the values can be 0 to 255(2^n-1), if we give something 256 it becomes 0, and 257 becomes 1, this avoids panicking but the values get changed, and can still be causing error somewhere.
+There are certaun ways to handle these, 
+• Wrap in all modes with the wrapping_* methods, such as wrapping_add .
+• Return the None value if there is overflow with the checked_* methods.
+• Return the value and a boolean indicating whether there was overflow with the
+overflowing_* methods.
+• Saturate at the value’s minimum or maximum values with the saturating_*
+methods.
+Floating-point types: The number with decimal points. we have f32 and f64, both are almost the same in work and speed, but ofc f64 is twice as precise as f32.
+RUST has same mathematical operations as any other lang, + - * / %, there are still more, but these are the basic math ones.
+Boolean-Type: Can be either true or false. keyword: "bool"
+character-type: They are single character, and are inside of single quotation mark. Can store upto 4 bit of memory, can hold multipe language(litrature) words.
+string is also a datatype but its defined differently.
+The U-8 is a unicode scalar values, which assigns unique code every charater, from basic english alpabat to japanees letter to emojis, 
+The range for unicode is U+0000 to U+D7FF and U+E000 to U+10FFFF, note that they have a gap inbetween, they are being left as placeholders for any future addble characters, for U-16.
+Compunnd type: can group multipe values into one type, it has 2 primitive compuond types: tuples and arrays.
+Tuple Type: A tuple is a general way of grouping together a number of values with a variety of types into one compound type. Tuples have a fixed length: once declared, they cannot grow or shrink in size.
+to avoid warning when you run the code with not used variable, you to add an underscore before the variables, to let the compiler know its intentional.
+use "." with the tuple name to access each elements, like indexing, synatx : tuple_name.0, gives the first element.
+Arrays : same as tuple but every element should have same datatype, in RUST we mostly just say type instead of datatype.
+Arrays have fixed length.
+Ownership is a set of rules that govern how a Rust program manages memory. All programs
+have to manage the way they use a computer’s memory while running.
+Both the stack and the heap are parts of memory available to your code to use at
+runtime, but they are structured in different ways. The stack stores values in the order
+it gets them and removes the values in the opposite order. This is referred to as last in,
+first out. Think of a stack of plates: when you add more plates, you put them on top of
+the pile, and when you need a plate, you take one off the top. Adding or removing
+plates from the middle or bottom wouldn’t work as well! Adding data is called pushing
+onto the stack, and removing data is called popping off the stack. All data stored on the
+stack must have a known, fixed size. Data with an unknown size at compile time or a
+size that might change must be stored on the heap instead.
+The heap is less organized: when you put data on the heap, you request a certain
+amount of space. The memory allocator finds an empty spot in the heap that is big
+enough, marks it as being in use, and returns a pointer, which is the address of that
+location. This process is called allocating on the heap and is sometimes abbreviated as
+just allocating.
+Pushing to the stack is faster than allocating on the heap because the allocator never
+has to search for a place to store new data; that location is always at the top of the
+stack. Comparatively, allocating space on the heap requires more work because the
+allocator must first find a big enough space to hold the data and then perform
+bookkeeping to prepare for the next allocation. the main purpose of ownership is to manage heap data.
+rules for ownership: • Each value in Rust has an owner.
+• There can only be one owner at a time.
+• When the owner goes out of scope, the value will be dropped.
